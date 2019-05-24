@@ -1,0 +1,133 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/* top模块 */
+.top {
+    width: 100%;
+}
+.logo {
+    float: left;
+    margin-left: 95px;
+    margin-top: 18px;
+}
+.navigation {
+    width: 750px;
+    height: 42px;
+    line-height: 42px;
+    float: right;
+    background: url("../imgs/circle2.png");
+    margin: 25px 58px 0 0; 
+}
+.navigation a {
+    color: #ffffff; 
+}
+.navigation .active {
+    color: #eaba02;
+}
+.navigation ul li {
+    float: left;
+    width: 137px;
+}
+.navigation ul li:first-child {
+    margin-left: 65px;
+}
+/* 滚动一定距离之后的header */
+.top_scroll {
+    width: 100%;
+    display: none;
+}
+.logo_scroll {
+    float: left;
+    margin-left: 95px;
+    margin-top: 7px;
+}
+.navigation_scroll {
+    width: 750px;
+    height: 42px;
+    line-height: 42px;
+    float: right;
+    margin: 25px 58px 0 0;
+}
+.navigation_scroll a {
+    color: #fff;
+}
+.navigation_scroll .active {
+    color: #eaba02;
+}
+.navigation_scroll ul li {
+    float: left;
+    width: 137px;
+}
+.logo_nav_scroll {
+    width: 100%;
+    height: 100px;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    z-index: 99;
+}
+html{
+    width: 100%;
+}
+/* 头部背景 */
+body {
+    width: 100%;
+    background: url("../imgs/intro_bg.png") no-repeat;
+}
+
+.first {
+    width: 1200px;
+    height: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+.first img {
+    position: absolute;
+    top: 265px;
+}
+
+.second {
+    width: 1600px;
+    height: 900px;
+    margin: 0 auto;
+    position: relative;
+}
+.second .game_model {
+    position: absolute;
+    top: 220px;
+}
+.second .game_battle {
+    width: 885px;
+    height: 465px;
+    position: absolute;
+    left: 275px;
+    top: 250px;
+    background: url("../imgs/bkkcx.png") no-repeat;
+    z-index: 5;
+}
+.second .game_video {
+    width: 744px;
+    height: 504px;
+    background: url("../imgs/kmlm.png") no-repeat;
+    position: absolute;
+    right: 200px;
+    top: 100px;
+    z-index: 9;
+}
+.game_cover img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-51%);
+}
+.game_video .cover_hide {
+
+
+
+}
