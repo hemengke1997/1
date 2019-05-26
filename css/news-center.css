@@ -74,6 +74,7 @@ a {
     height: 100px;
     background: rgba(0,0,0,.5);
     position: fixed;
+    z-index: 2;
 }
 /* 新闻模块 */
 .main_1 {
