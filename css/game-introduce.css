@@ -30,6 +30,9 @@ a {
 .navigation a {
     color: #ffffff; 
 }
+.navigation a:hover {
+    color: #000;
+}
 .navigation .active {
     color: #eaba02;
 }
@@ -59,6 +62,9 @@ a {
 }
 .navigation_scroll a {
     color: #fff;
+}
+.navigation_scroll a:hover {
+    color: #000;
 }
 .navigation_scroll .active {
     color: #eaba02;
@@ -267,7 +273,7 @@ body {
     height: 600px;
     position: absolute;
     left: -350px;
-    top: -166px;
+    top: -175px;
     background-image: url("../imgs/person22.png");
     background-repeat: no-repeat;
     animation: person_rotate 4s infinite;
@@ -275,7 +281,7 @@ body {
 }
 @keyframes person_rotate {
     0% {transform: rotate(0);}
-    50% {transform: rotate(90deg);}
+    50% {transform: rotate(45deg);}
     100% {transform: rotate(0);}
 }
 @-webkit-keyframes person_rotate {
@@ -289,7 +295,6 @@ body {
     top: 80px;
     background: url("../imgs/qppppp.png") no-repeat;
 }
-
 .game_classic {
     width: 841px;
     height: 421px;
@@ -408,12 +413,11 @@ body {
 .desc_content .desc {
     font-size: 14px;
     color: #fff;
-    margin-top: 40px;
+    margin: 50px 0;
 }
 .desc_content .energy {
     width: 100%;
     height: 170px;
-    margin-top: 70px;
 }
 .desc_content .energy li {
     height: 60px;
@@ -436,12 +440,36 @@ body {
     padding-left: 2px;
 }
 
-.main_top .character_model {
+.main_top .character_model1 {
     width: 503px;
     height: 667px;
     position: absolute;
-    left: 900px;
-    top: -60px;
+    left: 580px;
+    top: -140px;
+    background: url("../imgs/angry-bird.png") no-repeat;
+}
+.main_top .character_model2 {
+    width: 503px;
+    height: 667px;
+    position: absolute;
+    left: 580px;
+    top: -140px;
+    background: url("../imgs/angry-bird.png") no-repeat;
+}
+.main_top .character_model3 {
+    width: 503px;
+    height: 667px;
+    position: absolute;
+    left: 580px;
+    top: -160px;
+    background: url("../imgs/red_.png") no-repeat;
+}
+.main_top .character_model4 {
+    width: 503px;
+    height: 667px;
+    position: absolute;
+    left: 580px;
+    top: -140px;
     background: url("../imgs/angry-bird.png") no-repeat;
 }
 .fourth .pig {
@@ -468,6 +496,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+.character_list .active {
+    
 }
 .character_list li {
     cursor: pointer;
@@ -517,3 +548,4 @@ body {
     text-align: center;
     margin-top: 30px;
 }
+

@@ -28,6 +28,9 @@ a {
 .navigation a {
     color: #ffffff; 
 }
+.navigation a:hover {
+    color: #000;
+}
 .navigation .active {
     color: #eaba02;
 }

@@ -1,0 +1,226 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+/* top模块 */
+.top {
+    width: 100%;
+}
+.logo {
+    float: left;
+    margin-left: 95px;
+    margin-top: 18px;
+}
+.navigation {
+    width: 750px;
+    height: 42px;
+    line-height: 42px;
+    float: right;
+    background: url("../imgs/circle2.png");
+    margin: 25px 58px 0 0; 
+    position: relative;
+    z-index: 1;
+}
+.navigation a {
+    color: #ffffff; 
+}
+.navigation a:hover {
+    color: #000;
+}
+.navigation .active {
+    color: #eaba02;
+}
+.navigation ul li {
+    float: left;
+    width: 137px;
+}
+.navigation ul li:first-child {
+    margin-left: 65px;
+}
+/* 滚动一定距离之后的header */
+.top_scroll {
+    width: 100%;
+    display: none;
+}
+.logo_scroll {
+    float: left;
+    margin-left: 95px;
+    margin-top: 7px;
+}
+.navigation_scroll {
+    width: 750px;
+    height: 42px;
+    line-height: 42px;
+    float: right;
+    margin: 25px 58px 0 0;
+}
+.navigation_scroll a {
+    color: #fff;
+}
+.navigation_scroll a:hover {
+    color: #000;
+}
+.navigation_scroll .active {
+    color: #eaba02;
+}
+.navigation_scroll ul li {
+    float: left;
+    width: 137px;
+}
+.logo_nav_scroll {
+    width: 100%;
+    height: 100px;
+    background: rgba(0,0,0,.5);
+    position: fixed;
+    z-index: 99;
+}
+/* header结束 */
+body {
+    width: 100%;
+    background: url("../imgs/BG_ddf8da8.png") no-repeat;
+}
+/* 第一屏 */
+.first {
+    width: 100%;
+    height: 900px;
+}
+/* 第二屏 */
+.second {
+    width: 100%;
+    height: 900px;
+}
+.second .container {
+    width: 1200px;
+    height: 580px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+.container .hot_goods_title {
+    width: 145px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.container .hot_goods_title span {
+    font-size: 30px;
+    font-weight: bold;
+    color: #cac6bf;
+    margin-bottom: 15px;
+}
+.container .hot_goods_title h1 {
+    font-size: 36px;
+}
+.container .hot_goods_title .yellow_bg {
+    width: 68px;
+    height: 20px;
+    position: absolute;
+    left: -13px;
+    bottom: -7px;
+    background: url("../imgs/yellow_bg.png") no-repeat;
+    z-index: -1;
+}
+.hot_goods_body {
+    width: 100%;
+    height: 380px;
+}
+.hot_goods_body .goods_list {
+    width: 100%;
+    height: 380px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.hot_goods_body .goods_list li {
+    width: 285px;
+    height: 360px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+.hot_goods_body .goods_list li .good_pic {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+.hot_goods_body .goods_list li .good_desc {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.price {
+    color: #ff9601;
+    margin-top: 20px;
+    margin-right: 10px;
+}
+.price .cast {
+    font-size: 18px;
+}
+.price .money {
+    font-size: 24px;
+}
+
+
+/* footer */
+.footer {
+    width: 100%;
+    height: 500px;
+    background: url("../imgs/p5_bg_9831973.png") no-repeat;
+    position: relative;
+    margin-top: -5px;
+    overflow: hidden;
+}
+.footer .info{
+    width: 390px;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+.footer .info li span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 8px;
+}
+.footer .info li:nth-child(2) {
+    margin: 30px auto;
+}
+.twitter {
+    margin: 0 30px;
+}
+.footer .person {
+    width: 1200px;
+    height: 96px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #3c3660;
+    margin-top: 90px;
+}
+.copyright {
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    margin-top: 30px;
+}

@@ -31,7 +31,7 @@
                 $(window).scroll(function () {
                     var scrollHeight = $(window).scrollTop();
                     //console.log(scrollHeight);
-                    if(scrollHeight >= 100) {
+                    if(scrollHeight >= 80) {
                         $('.top').css('display','none');
                         $('.top_scroll').css('display','block');
                     } else {
