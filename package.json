@@ -1,0 +1,19 @@
+{
+  "name": "hmk-views",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "less": "^3.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.vm.snqu.com/lirui/study.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
