@@ -94,6 +94,7 @@ body {
 .second {
     width: 100%;
     height: 900px;
+    position: relative;
 }
 .second .container {
     width: 1200px;
@@ -142,6 +143,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
 }
+
 .hot_goods_body .goods_list li {
     width: 285px;
     height: 360px;
@@ -150,6 +152,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 100px;
+    position: relative;
 }
 .hot_goods_body .goods_list li .good_pic {
     width: 100%;
@@ -166,6 +169,41 @@ body {
     flex-direction: column;
     align-items: center;
 }
+.hot_goods_body .goods_list .add {
+    width: 130px;
+    height: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+}
+.hot_goods_body .goods_list .add_to_car {
+    display: flex;
+    flex-direction: row;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 50%;
+    bottom: -11px;
+    transform: translateX(-50%);
+    transition: width .3s ease-out,
+                border-radius .3s ease-out;
+    cursor: pointer;
+}
+.hot_goods_body .goods_list .add p {
+    font-size: 12px;
+    font-weight: bold;
+    position: absolute;
+    left: 32px;
+    bottom: -3px;
+    display: none;
+    cursor: pointer;
+}
+.hot_goods_body .goods_list .add_to_car.active {
+    width: 130px;
+    background-color: #ff9601;
+    border-radius: 40px;
+}
 .price {
     color: #ff9601;
     margin-top: 20px;
@@ -177,7 +215,144 @@ body {
 .price .money {
     font-size: 24px;
 }
+.second .person_animate {
+    width: 416px;
+    height: 381px;
+    position: absolute;
+    left: -80px;
+    bottom: -100px;
+    background: url("../imgs/sec3_bazzi.png") no-repeat;
+}
 
+.third {
+    width: 100%;
+    height: 840px;
+}
+.third .tab_box {
+    width: 1200px;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+.third .tab_list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.third .tab_list li {
+    margin: 0 40px;
+    color: #edcfce;
+    cursor: pointer;
+    position: relative;
+}
+.third .tab_list li.active {
+    color: #fff;
+}
+.third .tab_list li .yellow_bg {
+    width: 36px;
+    height: 8px;
+    position: absolute;
+    left: -12px;
+    top: 15px;
+    background-image: url("../imgs/yellowjvmm.png");
+    z-index: -1;
+    display: none;
+}
+.third .tab_list li .yellow_bg.active {
+    display: block;
+}
+.third .all_pic_box {
+    width: 100%;
+    height: 800px;
+    border-top: 1px solid #f03d2b;
+}
+.third .all_pic_box .pic_box {
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.third .all_pic_box .pic_box .pic_list {  
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.third .all_pic_box .pic_box .pic_list li {
+    width: 210px;
+    height: 330px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    position: relative;
+    box-shadow: 4px 4px 4px 1px rgba(0, 0, 0, .5);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.third .all_pic_box .pic_box .pic_list li.active {
+    border: 3px solid #ff9601;
+}
+.pic_box .pic_list li .pic_li_body {
+    width: 210px;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0 10px;
+    position: relative;
+}
+.pic_box .pic_list li .pic_li_body .good_name {
+    font-size: 14px;
+    font-weight: 700; 
+}
+.pic_box .pic_list li .pic_li_body .left_time {
+    font-size: 11px;
+    font-weight: bold;
+    color: #b2b2b2;
+    display: inline-block;
+    height: 15px;
+}
+.pic_box .pic_list li .pic_li_body .good_price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ff9601;
+    margin-top: 5px;
+}
+.pic_box .pic_list li .pic_li_body .limited_time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 14px;
+    position: absolute;
+    right: 100px;
+    top: 3px;
+    font-size: 10px;
+    color: #fff;
+    background-color: #ff4301;
+    border-radius: 4px;
+}
+.pic_box .pic_list li .pic_li_body img {
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+    cursor: pointer;
+}
+.third .all_pic_box .pic_box .pic_list li .img_label {
+    display: block;
+    width: 36px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+}
 
 /* footer */
 .footer {
