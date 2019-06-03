@@ -23,7 +23,7 @@
             this.picLiMouseEnter();
             this.textFn();
             this.changeImgLabel();
-            this.priceFormat();
+            this.headActive();
         },
         windowScrollFn: function () {
             $(window).scroll(function () { 
@@ -63,6 +63,9 @@
                 $(this).siblings('li').find('.yellow_bg').removeClass('active');
                 $(this).addClass('active');
                 $(this).find('.yellow_bg').addClass('active');
+                var index = $(this).index();
+                $('.pic_box').css("display","none");
+                $('.pic_box').eq(index).css("display","block");
             });
         },
         picLiMouseEnter: function () {
@@ -81,7 +84,6 @@
         },
         changeImgLabel: function(){
             $('.img_label').each(function(){
-                console.log($(this).text());
                 var value = $(this).text();
                 switch(value){
                     case "皮肤":
@@ -104,19 +106,17 @@
                 }
             })
         },
-        priceFormat: function (params) {
-            var price = [];
-            var arr = $('.good_price');
-            for(var i = 0, len = arr.length; i < len; i++){
-                var value = arr[i].value;
-                if(value.indexOf(".") != -1) {
-                    var h = value.split(".")[0];
-                    var b = value.split(".")[1];
-                    console.log(h);
-                    console.log(b);
-                }
-            }
-        }
+        headActive: function () {
+            $('.role_head_li').mouseenter(function(){
+                $(this).siblings('li').find('img').removeClass('active');
+                $(this).find('img').addClass('active');
+                
+            })
+        },
+        // picBoxActive: function () {
+        //     $('tab_list li').
+        // }
+        
     }
     indexMode.init();
 }())
