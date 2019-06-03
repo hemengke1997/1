@@ -246,14 +246,25 @@ body {
     height: 640px;
     background-color: #f6f6f6;
 }
+.role_left .role_pic {
+    width: 270px;
+    height: 370px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .role_left .role_name {
     font-size: 16px;
     font-weight: 700;
     color: #b2b2b2;
 }
+.role_head_box {
+    margin-top: 40px;
+    overflow: hidden;
+}
 .role_left .role_head_ul {
     display: flex;
-    margin: 40px 0 -40px 0;
+    width: 290px;
 }
 .role_left .role_head_ul .role_head_li {
     margin: 0 5px;
@@ -315,12 +326,14 @@ body {
     height: 11px;
     background: url("../imgs/zu30.png");
     margin-left: 30px;
+    cursor: pointer;
 }
 .role_right .role_clothes .clothes {
     margin-right: 30px;
 }
 .role_right .role_clothes .clothes span {
     color: #d8d8d8;
+    font-family: sans-serif, '黑体';
 }
 .role_right .role_clothes .clothes span:nth-child(1) {
     font-size: 24px;

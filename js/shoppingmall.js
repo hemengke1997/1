@@ -24,6 +24,7 @@
             this.textFn();
             this.changeImgLabel();
             this.headActive();
+
         },
         windowScrollFn: function () {
             $(window).scroll(function () { 
@@ -110,12 +111,71 @@
             $('.role_head_li').mouseenter(function(){
                 $(this).siblings('li').find('img').removeClass('active');
                 $(this).find('img').addClass('active');
-                
+                let index = $(this).index();
+                $('.role_pic').css("display","none");
+                $('.role_pic').eq(index).css("display","flex");    
+            });
+
+            // 点击右箭头
+            $('.arrow_right').click(function() {
+                let index = $('.role_head img.active').parents('li').index();
+                let len = $('.role_head_li').length;
+                if(index < len-2) {
+                    $('.role_pic').eq(index).css('display','none');
+                    $('.role_head img.active').removeClass('active');
+                    index++;
+                    $('.role_pic').eq(index).css('display','flex');
+                    $('.role_head_li').eq(index).find('img').addClass('active');
+                } else if(index == len-2) {
+                    $('.role_pic').eq(index).css('display','none');
+                    $('.role_head img.active').removeClass('active');
+                    index++;
+                    $('.role_pic').eq(index).css('display','flex');
+                    $('.role_head_li').eq(index).find('img').addClass('active');
+                    // ul的变化
+                    $('.role_head_ul').css("transform","translateX(-60px)");
+                } else if(index == len-1){
+                    $('.role_pic').eq(index).css('display','none');
+                    $('.role_head img.active').removeClass('active');
+                    $('.role_pic').eq(0).css('display','flex');
+                    $('.role_head_li').eq(0).find('img').addClass('active');
+                    index = 0;
+                    // ul的变化
+                    $('.role_head_ul').css("transform","translateX(0px)");
+                }
+            });
+            
+            //点击左箭头
+            $('.arrow_left').click(function() {
+                let index = $('.role_head img.active').parents('li').index();
+                let len = $('.role_head_li').length;
+                let flag = true;
+                if(index > 0) {
+                    $('.role_pic').eq(index).css('display','none');
+                    $('.role_head img.active').removeClass('active');
+                    index--;
+                    $('.role_pic').eq(index).css('display','flex');
+                    $('.role_head_li').eq(index).find('img').addClass('active');
+                    if (index == 0) {
+                        if($('.role_head_ul').attr("style") != undefined){
+                            $('.role_head_ul').css("transform","translateX(0px)");
+                        }
+                    }
+                } else if (index == 0) {
+                    $('.role_pic').eq(index).css('display','none');
+                    $('.role_head img.active').removeClass('active');
+                    $('.role_pic').eq(len-1).css('display','flex');
+                    $('.role_head_li').eq(len-1).find('img').addClass('active');
+                    // 下面的ul怎么变化
+                    $('.role_head_ul').css("transform","translateX(-60px)");
+                } 
+            });
+
+            //点击返回箭头
+            $('.arrow_back').click(function(){
+                $('.choose_role').css('display','none');
             })
         },
-        // picBoxActive: function () {
-        //     $('tab_list li').
-        // }
         
     }
     indexMode.init();
