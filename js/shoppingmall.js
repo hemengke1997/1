@@ -11,7 +11,7 @@
 
     //     }
     // ]
-    var indexMode = {
+    var ShopMode = {
         init: function(){
             this.totalEvents()
         },
@@ -108,75 +108,29 @@
             })
         },
         headActive: function () {
+            function close() {
+                $('.choose_role').css('display','none');
+            }
+            $('.arrow_back').click(close);
+
+            //头像下标
+            var selected_item_index = 0;
+            // 鼠标进入的时候，当前头像active 其他头像取消active
             $('.role_head_li').mouseenter(function(){
                 $(this).siblings('li').find('img').removeClass('active');
                 $(this).find('img').addClass('active');
-                let index = $(this).index();
-                $('.role_pic').css("display","none");
-                $('.role_pic').eq(index).css("display","flex");    
-            });
-
-            // 点击右箭头
-            $('.arrow_right').click(function() {
-                let index = $('.role_head img.active').parents('li').index();
-                let len = $('.role_head_li').length;
-                if(index < len-2) {
-                    $('.role_pic').eq(index).css('display','none');
-                    $('.role_head img.active').removeClass('active');
-                    index++;
-                    $('.role_pic').eq(index).css('display','flex');
-                    $('.role_head_li').eq(index).find('img').addClass('active');
-                } else if(index == len-2) {
-                    $('.role_pic').eq(index).css('display','none');
-                    $('.role_head img.active').removeClass('active');
-                    index++;
-                    $('.role_pic').eq(index).css('display','flex');
-                    $('.role_head_li').eq(index).find('img').addClass('active');
-                    // ul的变化
-                    $('.role_head_ul').css("transform","translateX(-60px)");
-                } else if(index == len-1){
-                    $('.role_pic').eq(index).css('display','none');
-                    $('.role_head img.active').removeClass('active');
-                    $('.role_pic').eq(0).css('display','flex');
-                    $('.role_head_li').eq(0).find('img').addClass('active');
-                    index = 0;
-                    // ul的变化
-                    $('.role_head_ul').css("transform","translateX(0px)");
-                }
-            });
-            
-            //点击左箭头
-            $('.arrow_left').click(function() {
-                let index = $('.role_head img.active').parents('li').index();
-                let len = $('.role_head_li').length;
-                let flag = true;
-                if(index > 0) {
-                    $('.role_pic').eq(index).css('display','none');
-                    $('.role_head img.active').removeClass('active');
-                    index--;
-                    $('.role_pic').eq(index).css('display','flex');
-                    $('.role_head_li').eq(index).find('img').addClass('active');
-                    if (index == 0) {
-                        if($('.role_head_ul').attr("style") != undefined){
-                            $('.role_head_ul').css("transform","translateX(0px)");
-                        }
-                    }
-                } else if (index == 0) {
-                    $('.role_pic').eq(index).css('display','none');
-                    $('.role_head img.active').removeClass('active');
-                    $('.role_pic').eq(len-1).css('display','flex');
-                    $('.role_head_li').eq(len-1).find('img').addClass('active');
-                    // 下面的ul怎么变化
-                    $('.role_head_ul').css("transform","translateX(-60px)");
-                } 
-            });
-
-            //点击返回箭头
-            $('.arrow_back').click(function(){
-                $('.choose_role').css('display','none');
             })
-        },
-        
+            // 1 鼠标离开的时候 恢复上一个选择的头像active状态  并把当前的头像取消active状态
+            $('.role_head_li').mouseleave(function(){
+                if($(this).index() === selected_item_index) {
+                    console.log(1);
+                } else {
+                    $(this).find('img').removeClass('active');
+                    $(this).eq(selected_item_index).find('img').addClass('active');
+                } 
+            })
+            
+        }
     }
-    indexMode.init();
+    ShopMode.init();
 }())

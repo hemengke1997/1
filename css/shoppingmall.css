@@ -260,7 +260,7 @@ body {
 }
 .role_head_box {
     margin-top: 40px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 .role_left .role_head_ul {
     display: flex;
@@ -279,6 +279,8 @@ body {
 }
 .role_left .role_head_ul .role_head_li .role_head img {
     cursor: pointer;
+    width: 42px;
+    height: 42px;
 }
 .role_left .role_head_ul .role_head_li .role_head img.active {
     box-sizing: border-box;
