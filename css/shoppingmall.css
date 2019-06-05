@@ -245,6 +245,7 @@ body {
     width: 480px;
     height: 640px;
     background-color: #f6f6f6;
+    border-radius: 0 10px 10px 0;
 }
 .role_left .role_pic {
     width: 270px;
@@ -260,7 +261,7 @@ body {
 }
 .role_head_box {
     margin-top: 40px;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 .role_left .role_head_ul {
     display: flex;
@@ -315,7 +316,9 @@ body {
     cursor: pointer;
 }
 
-.role_right .role_clothes {
+.role_right .role_clothes,
+.role_right .cart_title
+{
     height: 80px;
     border-bottom: 1px solid #d8d8d8;
     display: flex;
@@ -361,6 +364,94 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #ff9601;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+.role_right .cart_title .cart {
+    color: #d8d8d8;
+    font-size: 24px;
+    font-weight: 700;
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+.role_right .close_cart {
+    display: block;
+    width: 25px;
+    height: 25px;
+    position: relative;
+    margin-right: 38px;
+    cursor: pointer;
+}
+.role_right .cart_title .close_cart::before,
+.role_right .cart_title .close_cart::after{
+    content: "";
+    position: absolute;
+    height: 25px;
+    width: 1.5px;
+    top: 0;
+    right: 12px;
+    background-color: #000;
+}
+.role_right .cart_title .close_cart::before {
+    transform: rotate(45deg);
+}
+.role_right .cart_title .close_cart::after {
+    transform: rotate(-45deg);
+}
+
+.role_right .cart_title .cart span:last-child {
+    font-size: 16px;
+}
+.role_right .goods_list .goods_ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.role_right .goods_list .goods_ul .goods_item {
+    width: 400px;
+    height: 60px;
+    background-color: #fff;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.role_right .goods_list .goods_ul .goods_item.active {
+    background-color: #ebebeb;
+    transform: translateY(-5px);
+    transition: all 0.1s linear;
+}
+.goods_ul .goods_item img {
+    margin: 0 20px;
+}
+.role_right .goods_list .goods_ul .goods_item span:last-child {
+    width: 22px;
+    height: 22px;
+    background: url("../imgs/buypkkjk.png") no-repeat;
+    margin-left: 235px;
+}
+
+.role_right .reset {
+    width: 150px;
+    height: 40px;
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebebeb;
+    color: #999;
     font-size: 14px;
     font-weight: 700;
     border-radius: 5px;
