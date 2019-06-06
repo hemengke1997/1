@@ -1,0 +1,489 @@
+@media screen and (min-width: 1200px){
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    ul {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    /* .role_name类字体 */
+    @font-face
+    {
+        font-family: wenyue;
+        src: url("../font/WenYue-XinQingNianTi-NC-W8-1.otf");
+    }
+    /* top模块 */
+    .top {
+        width: 100%;
+    }
+    .logo {
+        float: left;
+        margin-left: 95px;
+        margin-top: 18px;
+        position: relative;
+        z-index: 1;
+    }
+    .navigation {
+        width: 750px;
+        height: 42px;
+        line-height: 42px;
+        float: right;
+        background: url("../imgs/circle2.png");
+        margin: 25px 58px 0 0; 
+        position: relative;
+        z-index: 1;
+    }
+    .navigation a {
+        color: #ffffff; 
+    }
+    .navigation a:hover {
+        color: #000;
+    }
+    .navigation .active {
+        color: #eaba02;
+    }
+    .navigation ul li {
+        float: left;
+        width: 137px;
+    }
+    .navigation ul li:first-child {
+        margin-left: 65px;
+    }
+    /* 滚动一定距离之后的header */
+    .top_scroll {
+        width: 100%;
+        display: none;
+    }
+    .logo_scroll {
+        float: left;
+        margin-left: 95px;
+        margin-top: 7px;
+    }
+    .navigation_scroll {
+        width: 750px;
+        height: 42px;
+        line-height: 42px;
+        float: right;
+        margin: 25px 58px 0 0;
+    }
+    .navigation_scroll a {
+        color: #fff;
+    }
+    .navigation_scroll a:hover {
+        color: #000;
+    }
+    .navigation_scroll .active {
+        color: #eaba02;
+    }
+    .navigation_scroll ul li {
+        float: left;
+        width: 137px;
+    }
+    .logo_nav_scroll {
+        width: 100%;
+        height: 100px;
+        background: rgba(0,0,0,.5);
+        position: fixed;
+        z-index: 99;
+    }
+    /* header结束 */
+    /* 第一屏开始 */
+    .first {
+        width: 100%;
+        height: 960px;
+        position: relative;
+        background: url("../imgs/bg_wrap_fullpage.png") no-repeat top center;
+    }
+    .first .first_container {
+        width: 1200px;
+        height: 960px;
+        margin: 0 auto;
+    }
+    .first_container .first_logo {
+        width: 680px;
+        height: 605px;
+        background: url("../imgs/jkvlog.png") no-repeat;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    .first_container .first_cute {
+        position: absolute;
+        width: 1105px;
+        height: 645px;
+        left: 50%;
+        bottom: -50px;
+        transform: translateX(-50%);
+    }
+    
+    /* 第一屏结束 */
+    /* 第二屏开始 */
+    .second {
+        width: 100%;
+        height: 280px;
+        background: url("../imgs/zu23.png") no-repeat;
+    }
+    .second .second_container {
+        width: 1200px;
+        height: 280px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+    }
+    .second .second_container .role_ul {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    
+    .second .second_container .role_item {
+        width: 280px;
+        height: 114px;
+        position: relative;
+    }
+    .second .second_container .role_item:nth-child(1) {
+        background: url("../imgs/charorange.png") no-repeat;
+    }
+    .second .second_container .role_item:nth-child(2) {
+        background: url("../imgs/charblue.png") no-repeat;
+    }
+    .second .second_container .role_item:nth-child(3) {
+        background: url("../imgs/charred.png") no-repeat;
+    }
+    .second .second_container .role_item:nth-child(4) {
+        background: url("../imgs/charyellow.png") no-repeat;
+    }
+    .second .second_container .role_item .role_name {
+        font-size: 24px;
+        font-weight: 700;
+        font-family: wenyue;
+        color: #fff;
+        position: absolute;
+        left: 50px;
+        top: 20px;
+    }
+    .second .second_container .role_item .role_pic {
+        position: absolute;
+        right: 0;
+        top: -70px;
+    }
+    /* 第二屏结束 */
+    /* 第三屏开始 */
+    .third {
+        width: 100%;
+        height: 760px;
+        background: url("../imgs/third_part_bg.png") no-repeat;
+        padding-top: 1px;
+        position: relative;
+    }
+    .third .third_person {
+        display: block;
+        width: 285px;
+        height: 356px;
+        position: absolute;
+        left: -300px;
+        bottom: -135px;
+        background: url("../imgs/sub02_char02.png") no-repeat;
+    }
+    .third .third_container {
+        width: 1200px;
+        height: 599px;
+        margin: 110px auto 0 auto;
+        position: relative;
+    }
+    .third .third_container .carousel {
+        width: 600px;
+        height: 390px;
+        border: 10px solid #000;
+        border-radius: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    .carousel_box {
+        width: 600px;
+        height: 390px;
+        overflow: hidden;
+    }
+    .carousel .carousel_ul {
+        display: flex;
+    }
+    .carousel .carousel_ul .carousel_item img{
+        width: 600px;
+        height: 390px;
+    }
+    .third .third_container .carousel .arrow_left {
+        width: 37px;
+        height: 31px;
+        background: url("../imgs/left.png") no-repeat;
+        position: absolute;
+        left: 250px;
+        bottom: -55px;
+    } 
+    .third .third_container .carousel .arrow_right {
+        width: 41px;
+        height: 35px;
+        background: url("../imgs/right.png") no-repeat;
+        position: absolute;
+        right: 250px;
+        bottom: -57px;
+    }
+    .third_container .news_box {
+        width: 570px;
+        height: 390px;
+        position: absolute;
+        right: 30px;
+        top: 110px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px 5px rgba(0,0,0,.2);
+    }
+    
+    .third_container .news_box .news_tab {
+        width: 570px;
+        height: 110px;
+        position: absolute;
+        right: 0;
+        top: -110px;
+        
+    }
+    .news_box .news_tab .news_tab_ul{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 35px;
+    }
+    .news_tab_ul .news_tab_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 700;
+        margin: 0 20px;
+        cursor: pointer;
+        color: #736801;
+    }
+    .news_tab_ul .news_tab_item .news_ch {
+        margin: 5px 0;
+    }
+    .news_tab_ul .news_tab_item:first-child {
+        margin: 0 20px 0 0;
+    }
+    .news_tab_ul .news_tab_item:last-child {
+        margin: 0 0 0 20px;
+    }
+    .news_tab_ul .news_tab_item.active {
+        color: #000;
+    }
+    .news_tab_ul .news_tab_item.active::after{
+        background-color: #ffcc01;
+        content: "";
+        width: 30px;
+        height: 4px;
+        border-radius: 10px;
+    }
+    .news_tab_ul .news_tab_item .news_en {
+        font-family: 'Agency FB';
+    }
+    
+    .third_container .news_box .look_more {
+        display: block;
+        position: absolute;
+        right: 45px;
+        top: 35px;
+        width: 16px;
+        height: 16px;
+    }
+    .third_container .news_box .look_more::before,
+    .third_container .news_box .look_more:after {
+        background-color: #ffcc01;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .third_container .news_box .look_more::before {
+        width: 16px;
+        height: 4px;
+    }
+    .third_container .news_box .look_more::after {
+        width: 4px;
+        height: 16px;
+    }
+    .third_container .news_box .news_ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 55px;
+    } 
+    .news_item {
+        display: flex;
+        width: 470px;
+        height: 60px;
+        margin-left: 60px;
+        align-items: center;
+    }
+    .news_item .news_icon {
+        display: block;
+        width: 40px;
+        height: 20px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-right: 10px;
+        background-color: #ffcc01;
+        text-align: center;
+        line-height: 20px;
+    }
+    .news {
+        width: 420px;
+        height: 60px;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .news_item:last-child .news {
+        border-bottom: none;
+    }
+    .news .news_content {
+        font-size: 14px;
+    }
+    .news .news_date {
+        font-size: 12px;
+        float: right;
+    }
+    
+    /* 第三屏结束 */
+    /* 第四屏开始 */
+    .fourth {
+        width: 100%;
+        height: 780px;
+        background: url("../imgs/bg8.png") no-repeat;
+        overflow: hidden;
+    }
+    .fourth .fourth_container {
+        width: 1200px;
+        height: 460px;
+        margin: 210px auto 0 auto;
+        position: relative;
+    }
+    .fourth .fourth_container .great_video {
+        width: 125px;
+        height: 188px;
+        position: absolute;
+        left: -200px;
+        top: -20px;
+        background: url("../imgs/goodvideo.png") no-repeat;
+    }
+    
+    .fourth_container .video_tab {
+        width: 1200px;
+        height: 150px;
+        position: absolute;
+        left: 0px;
+        top: -100px;
+    }
+    .video_tab .video_tab_ul {
+        display: flex;
+        justify-content: flex-start;
+    }
+    .video_tab_ul .video_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;   
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        color: #dad3f2;
+    }
+    .video_tab_ul .video_item:first-child {
+        margin: 0 20px 0 0;
+    }
+    .video_tab_ul .video_item:last-child {
+        margin: 0 0 0 20px;
+    }
+    .video_tab_ul .video_item.active {
+        color: #fff;
+    }
+    .video_tab_ul .video_item.active::after {
+        background-color: #fff;
+        content: "";
+        width: 30px;
+        height: 4px;
+        border-radius: 10px;
+    }
+    .video_item .video_desc_ch {
+        margin: 5px 0;
+    }
+    .video_item .video_desc_en {
+        font-family: "Agency FB";
+    }
+    .fourth_container .video_box {
+        width: 1200px;
+        height: 440px;
+    }
+    .video_box .video_ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        height: 440px;
+    }
+    .video_item .video_title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        margin-top: 20px;
+    }
+    /* 第四屏结束 */
+    /* 页脚开始 */
+    .footer {
+        width: 100%;
+        height: 500px;
+        background: url("../imgs/p5_bg_9831973.png") no-repeat;
+        position: relative;
+        margin-top: -5px;
+        overflow: hidden;
+    }
+    .footer .info{
+        width: 390px;
+        height: 200px;
+        margin: 0 auto;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    } 
+    .footer .info li span {
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        margin: 0 8px;
+    }
+    .footer .info li:nth-child(2) {
+        margin: 30px auto;
+    }
+    .twitter {
+        margin: 0 30px;
+    }
+    .footer .person {
+        width: 1200px;
+        height: 96px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid #3c3660;
+        margin-top: 90px;
+    }
+    .copyright {
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+        margin-top: 30px;
+    }
+    /* 页脚结束 */
+}
