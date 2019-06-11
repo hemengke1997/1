@@ -85,10 +85,9 @@
                 let len = $('.carousel_item').length;
                 let p_width = $('.carousel_item img').width();
                 $('.carousel_ul').css('left',''+ -p_width +'');
-                 let timerID = setInterval(selectPic,3000);
+                let timerID = setInterval(selectPic,3000);
                 $('.carousel_box').mouseenter(()=>{
                     clearInterval(timerID);
-                    $('.carousel_item').eq(index).stop();
                 }).mouseleave(()=>{
                     timerID = setInterval(selectPic,3000);
                 })    
@@ -125,21 +124,25 @@
                 });
                 $('.arrow_left').click(function(){
                     if(flag) {
+                        flag = !flag;
                         clearInterval(timerID);
-                    if(index === 1){
-                        $('.carousel_ul').animate({
-                            left:'0px'
-                        },800,'linear',function(){
-                            $('.carousel_ul').css('left', -(len-2) * p_width);
-                        })
-                        index = len-2;
-                    } else {
-                        $('.carousel_ul').animate({
-                            left: ''+ (-p_width) * (index - 1) +'px'
-                        },800,'linear')
-                        index--;
-                    }
-                    timerID = setInterval(selectPic,3000);
+                        if(index === 1){
+                            $('.carousel_ul').animate({
+                                left:'0px'
+                            },800,'linear',function(){
+                                $('.carousel_ul').css('left', -(len-2) * p_width);
+                                flag = !flag;
+                            })
+                            index = len-2;
+                        } else {
+                            $('.carousel_ul').animate({
+                                left: ''+ (-p_width) * (index - 1) +'px'
+                            },800,'linear',function(){
+                                flag = !flag;
+                            })
+                            index--;
+                        }
+                        timerID = setInterval(selectPic,3000);
                     }
                 })
                 

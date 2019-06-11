@@ -241,6 +241,15 @@ body {
     align-items: center;
     justify-content: center;
 }
+.choose_role .role_left #role_canvas {
+    border: 1px solid;
+    box-sizing: border-box;
+
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+}
 .choose_role .role_right {
     width: 480px;
     height: 640px;
@@ -260,12 +269,16 @@ body {
     color: #b2b2b2;
 }
 .role_head_box {
-    margin-top: 40px;
     overflow: hidden;
+    position: absolute;
+    left: 50%;
+    bottom: 65px;
+    transform: translateX(-50%);
 }
 .role_left .role_head_ul {
     display: flex;
     width: 290px;
+    
 }
 .role_left .role_head_ul .role_head_li {
     margin: 0 5px;
@@ -353,6 +366,9 @@ body {
 }
 .role_right .head_box .head_ul .head_li {
     margin: 10px;
+}
+.head_ul .head_li img {
+    cursor: pointer;
 }
 .role_right .head_box .ok_button {
     width: 150px;
