@@ -118,8 +118,15 @@
         left: 50%;
         bottom: -50px;
         transform: translateX(-50%);
+        animation: first_cute 3s linear infinite;
     }
-    
+    @keyframes first_cute {
+        0% {left:50%;bottom:-50px}
+        25% {left:50%;bottom:-45px}
+        50% {left:49%;bottom: -50px}
+        75% {left: 49%;bottom:-45px}
+        100% {left: 50%;bottom: -50px}
+    }
     /* 第一屏结束 */
     /* 第二屏开始 */
     .second {
@@ -186,8 +193,8 @@
         width: 285px;
         height: 356px;
         position: absolute;
-        left: -300px;
-        bottom: -135px;
+        left: -410px;
+        bottom: -10px;
         background: url("../imgs/sub02_char02.png") no-repeat;
     }
     .third .third_container {
@@ -208,13 +215,18 @@
         width: 600px;
         height: 390px;
         overflow: hidden;
+        position: relative;
     }
     .carousel .carousel_ul {
         display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
     .carousel .carousel_ul .carousel_item img{
         width: 600px;
         height: 390px;
+        border-radius: 5px;
     }
     .third .third_container .carousel .arrow_left {
         width: 37px;
@@ -223,6 +235,7 @@
         position: absolute;
         left: 250px;
         bottom: -55px;
+        cursor: pointer;
     } 
     .third .third_container .carousel .arrow_right {
         width: 41px;
@@ -231,6 +244,7 @@
         position: absolute;
         right: 250px;
         bottom: -57px;
+        cursor: pointer;
     }
     .third_container .news_box {
         width: 570px;
@@ -242,16 +256,20 @@
         border-radius: 10px;
         box-shadow: 0px 0px 5px 5px rgba(0,0,0,.2);
     }
-    
-    .third_container .news_box .news_tab {
+    .third_container .news_box.active {
+        display: block;
+    }
+    .third_container .news_box.hide {
+        display: none;
+    }   
+    .third_container .news_tab {
         width: 570px;
         height: 110px;
         position: absolute;
-        right: 0;
-        top: -110px;
-        
+        right: 35px;
+        top: -20px;
     }
-    .news_box .news_tab .news_tab_ul{
+    .news_tab .news_tab_ul{
         display: flex;
         justify-content: flex-end;
         margin-top: 35px;
@@ -293,9 +311,10 @@
         display: block;
         position: absolute;
         right: 45px;
-        top: 35px;
+        top: 25px;
         width: 16px;
         height: 16px;
+        cursor: pointer;
     }
     .third_container .news_box .look_more::before,
     .third_container .news_box .look_more:after {
@@ -320,12 +339,29 @@
         justify-content: space-between;
         margin-top: 55px;
     } 
+    .news_ul.active {
+        display: flex;
+    }
+    .news_ul.hide {
+        display: none !important; 
+    }
     .news_item {
         display: flex;
         width: 470px;
         height: 60px;
         margin-left: 60px;
         align-items: center;
+        transition: padding-left 0.2s linear;
+        cursor: pointer;
+    }
+    .news_item.active {
+        width: 540px;
+        height: 60px;
+        background-color: #537ff5;
+        padding-left: 40px;
+    }
+    .news_item.active .news_icon {
+        background-color: #fff;
     }
     .news_item .news_icon {
         display: block;
@@ -391,7 +427,7 @@
         display: flex;
         justify-content: flex-start;
     }
-    .video_tab_ul .video_item {
+    .video_tab_ul .video_tab_li {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -401,31 +437,37 @@
         cursor: pointer;
         color: #dad3f2;
     }
-    .video_tab_ul .video_item:first-child {
+    .video_tab_ul .video_tab_li:first-child {
         margin: 0 20px 0 0;
     }
-    .video_tab_ul .video_item:last-child {
+    .video_tab_ul .video_tab_li:last-child {
         margin: 0 0 0 20px;
     }
-    .video_tab_ul .video_item.active {
+    .video_tab_ul .video_tab_li.active {
         color: #fff;
     }
-    .video_tab_ul .video_item.active::after {
+    .video_tab_ul .video_tab_li.active::after {
         background-color: #fff;
         content: "";
         width: 30px;
         height: 4px;
         border-radius: 10px;
     }
-    .video_item .video_desc_ch {
+    .video_tab_li .video_desc_ch {
         margin: 5px 0;
     }
-    .video_item .video_desc_en {
+    .video_tab_li .video_desc_en {
         font-family: "Agency FB";
     }
     .fourth_container .video_box {
         width: 1200px;
         height: 440px;
+    }
+    .fourth_container .video_box.active {
+        display: block;
+    }
+    .fourth_container .video_box.hide {
+        display: none;
     }
     .video_box .video_ul {
         display: flex;
@@ -433,11 +475,90 @@
         justify-content: space-between;
         height: 440px;
     }
+    .video_item {
+        position: relative;
+    }
+    .video_item video {
+        width: 280px;
+        height: 160px;
+        border-radius: 5px;
+    }
     .video_item .video_title {
         font-size: 14px;
         font-weight: 700;
         color: #fff;
         margin-top: 20px;
+    }
+    .video_item .video_mask {
+        width: 280px;
+        height: 160px;
+        background-color: rgba(0, 0, 0, .6);
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .video_item .video_mask.hide {
+        background-color: rgba(0, 0, 0, .1);
+    }
+    .video_item .video_mask .video_button {
+        width: 74px;
+        height: 72px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        background: url("../imgs/video_button.png") no-repeat;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+    .big_video_box {
+        width: 1200px;
+        height: 720px;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 99;
+        display: none;
+    }
+    .big_video_box video {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .big_video_box .close_video {
+        display: block;
+        position: absolute;
+        right: 170px;
+        top: 90px;
+        width: 35px;
+        height: 30px;
+        cursor: pointer;
+    }
+    .big_video_box .close_video::before, 
+    .big_video_box .close_video::after {
+        background-color: #000;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .big_video_box .close_video::before {
+        transform: rotate(45deg);
+        width: 30px;
+        height: 4px;
+        position: absolute;
+        left: 3px;
+        top: 13px;
+    }
+    .big_video_box .close_video::after {
+        transform: rotate(45deg);
+        width: 4px;
+        height: 30px;
+        position: absolute;
+        left: 16px;
+        top: 0;
     }
     /* 第四屏结束 */
     /* 页脚开始 */
