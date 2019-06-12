@@ -242,9 +242,6 @@ body {
     justify-content: center;
 }
 .choose_role .role_left #role_canvas {
-    border: 1px solid;
-    box-sizing: border-box;
-
     position: absolute;
     left: 50%;
     top: 0;

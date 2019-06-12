@@ -17,7 +17,7 @@
             this.changeImgLabel();
             this.headActive();
             this.cart();
-            // this.initCanvas();
+            this.drawFirstCanvas();
         },
         windowScrollFn: function () {
             $(window).scroll(function () {
@@ -100,11 +100,27 @@
                 }
             })
         },
+        // 界面加载完成后，画第一个canvas
+        drawFirstCanvas: function() {
+            window.onload = function () {
+                ShopMode.beforeDraw();
+                ShopMode.draw();
+            }
+        },
         headActive: function () {
+            // 显示小头像的个数
             const headNumber = 5;
             let imgSrc;
-            let len = $('.role_pic').length;
+            let len = $('.role_head_li').length;
             let width = $('.role_head_li').width();
+
+            function headAddClass() {
+                $('.role_head_li').eq(selected_item_index).find('img').addClass('active');
+            }
+            function headRemoveClass() {
+                $('.role_head_li').eq(selected_item_index).find('img').removeClass('active');
+            }
+            
             // 鼠标进入的时候，当前头像active 其他头像取消active
             $('.role_head_li').mouseenter(function () {
                 $(this).siblings('li').find('img').removeClass('active');
@@ -115,130 +131,62 @@
                     return;
                 } else {
                     $(this).find('img').removeClass('active');
-                    $('.role_head_li').eq(selected_item_index).find('img').addClass('active');
+                    headAddClass();
                 }
             })
-            // 1 鼠标离开的时候 恢复上一个选择的头像active状态  并把当前的头像取消active状态
+            // 点击小头像 重新画图 并且该小头像active  之前小头像remove active
             $('.role_head_li').click(function () {
-                if ($(this).index() !== selected_item_index ) {
-                    if(JSON.stringify(canvas)=='{}'){
-                        //上一个选择的人物图隐藏
-                        $('.role_pic').eq(selected_item_index).css('display', 'none');
-                        //当前选择的人物图显示
-                        selected_item_index = $(this).index();
-                        addHeadStyle(selected_item_index);
-                    } else {
-                        selected_item_index = $(this).index();
-                        $('.role_head_li').eq($(this).index()).find('img').addClass('active');
-                        // 重绘canvas之前，先清空之前的canvas
-                        ShopMode.clearCanvas();
-                        ShopMode.beforeDraw();
-                        ShopMode.draw();
-                    }
+                if ($(this).index() !== selected_item_index) {
+                    headRemoveClass();
+                    ShopMode.clearCanvas();
+                    selected_item_index = $(this).index();
+                    headAddClass();
+                    ShopMode.beforeDraw();
+                    ShopMode.draw();
                 }
-
             })
-            // 删除头像的样式
-            function deleteHeadStyle(index) {
-                $('.role_pic').eq(index).css('display', 'none');
-                $('.role_head_li').eq(index).find('img').removeClass('active');
-            }
-            // 增加头像样式
-            function addHeadStyle(index){
-                $('.role_head_li').eq(index).find('img').addClass('active');
-                imgSrc = $('.role_head_li').eq(index).find('img').attr('src');
-                $('.role_pic').eq(index).find('img').attr('src', imgSrc);
-                $('.role_pic').eq(index).css('display','block');
-            }
             $('.arrow_right').on('click', function () {
-                if(JSON.stringify(canvas)=='{}'){
-                    deleteHeadStyle(selected_item_index);
-                    selected_item_index++;
-                    if (selected_item_index <= len - 1) {
-                        addHeadStyle(selected_item_index);
-                        if (selected_item_index >= 3 && selected_item_index <= len - 3) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
-                        } else if (selected_item_index == len - 2) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 3) + 'px)')
-                        }
-                    } else if (selected_item_index > len - 1) {
-                        deleteHeadStyle(selected_item_index);
-                        selected_item_index = 0;
-                        addHeadStyle(selected_item_index);
-                        $('.role_head_ul').css('transform', 'translateX(0px)')
+                // 1.取消当前小头像的样式
+                headRemoveClass();
+                selected_item_index++;
+                if (selected_item_index <= len - 1) {
+                    headAddClass();
+                    if (selected_item_index >= 3 && selected_item_index <= len - 3) {
+                        $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
+                    } else if (selected_item_index == len - 2) {
+                        $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 3) + 'px)')
                     }
-                } else {
-                    $('.role_head_li').eq(selected_item_index).find('img').removeClass('active');
-                    selected_item_index++;
-                    index = selected_item_index;
-                    if (selected_item_index <= len - 1) {
-                        
-                        $('.role_head_li').eq(index).find('img').addClass('active');
-                        // imgSrc = $('.role_head_li').eq(index).find('img').attr('src');
-                        // 开始重绘canvas
-                        ShopMode.clearCanvas();
-                        ShopMode.beforeDraw();
-                        ShopMode.draw();
-
-                        if (selected_item_index >= 3 && selected_item_index <= len - 3) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
-                        } else if (selected_item_index == len - 2) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 3) + 'px)')
-                        }
-                    } else if (selected_item_index > len - 1) { debugger
-                        $('.role_head_li').eq(selected_item_index).find('img').removeClass('active');
-                        selected_item_index = 0;
-                        $('.role_head_li').eq(selected_item_index).find('img').addClass('active');
-                        $('.role_head_ul').css('transform', 'translateX(0px)');
-                        // 开始重绘canvas
-                        ShopMode.clearCanvas();
-                        ShopMode.beforeDraw();
-                        ShopMode.draw();
-                    }
-                }
-                
+                } else if (selected_item_index > len - 1) {
+                    headRemoveClass();
+                    selected_item_index = 0;
+                    headAddClass();
+                    $('.role_head_ul').css('transform', 'translateX(0px)')
+                } 
+                // 开始重绘canvas
+                ShopMode.clearCanvas();
+                ShopMode.beforeDraw();
+                ShopMode.draw();
             })
 
             $('.arrow_left').on('click', function () {
-                if(JSON.stringify(canvas)=='{}'){
-                    deleteHeadStyle(selected_item_index);
-                    selected_item_index--;
-                    if (selected_item_index >= 0) {
-                        addHeadStyle(selected_item_index);
-                        if (selected_item_index <= len - 3 && selected_item_index > 2) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
-                        } else if (selected_item_index <= 2) {
-                            $('.role_head_ul').css('transform', 'translateX(0px)');
-                        }
-                    } else if (selected_item_index == -1) {
-                        selected_item_index = len - 1;
-                        addHeadStyle(selected_item_index);
-                        $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (len - headNumber) + 'px)')
+                headRemoveClass();       
+                selected_item_index--;
+                if (selected_item_index >= 0) {
+                    headAddClass();
+                    if (selected_item_index <= len - 3 && selected_item_index > 2) {
+                        $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
+                    } else if (selected_item_index <= 2) {
+                        $('.role_head_ul').css('transform', 'translateX(0px)');
                     }
-                } else {
-                    $('.role_head_li').eq(selected_item_index).find('img').removeClass('active');
-                    selected_item_index--;
-                    if (selected_item_index >= 0) {
-                        $('.role_head_li').eq(selected_item_index).find('img').addClass('active');
-                        // 开始重绘canvas
-                        ShopMode.clearCanvas();
-                        ShopMode.beforeDraw();
-                        ShopMode.draw();
-                        if (selected_item_index <= len - 3 && selected_item_index > 2) {
-                            $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (selected_item_index - 2) + 'px)')
-                        } else if (selected_item_index <= 2) {
-                            $('.role_head_ul').css('transform', 'translateX(0px)');
-                        }
-                    } else if (selected_item_index == -1) {
-                        selected_item_index = len - 1;
-                        $('.role_head_li').eq(selected_item_index).find('img').addClass('active');
-                        $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (len - headNumber) + 'px)');
-                        // 开始重绘canvas
-                        ShopMode.clearCanvas();
-                        ShopMode.beforeDraw();
-                        ShopMode.draw();
-                    }
-                }           
+                } else if (selected_item_index == -1) {
+                    selected_item_index = len - 1;
+                    headAddClass();
+                    $('.role_head_ul').css('transform', 'translateX(' + (-width - 10) * (len - headNumber) + 'px)')
+                }
+                // 开始重绘canvas
+                ShopMode.clearCanvas();
+                ShopMode.beforeDraw();
+                ShopMode.draw();
             })
 
         },
@@ -249,39 +197,44 @@
                 $(this).css('display','none');
                 $(this).siblings('.add_goods').css('display','block');
                 delete canvas[$(this).parent('li').attr('type')];
+                if(Object.keys(canvas).length == 1) {
+                    $('.reset').removeClass('active').attr('disabled',true);
+                }
                 // 开始重绘canvas
                 ShopMode.clearCanvas();
                 ShopMode.beforeDraw();
                 ShopMode.draw();
-
-
             }).mouseenter(function () {
                 $(this).addClass('active');
             }).mouseleave(function () {
                 $(this).removeClass('active');
             })
             $('.reset').click(function () {
-                if(JSON.stringify(canvas) != '{}') {
-                    canvas = {};
-                    ShopMode.clearCanvas();
+                if(Object.keys(canvas).length>1) {
+                    for(let key in canvas) {
+                        if(key != 'role'){
+                            delete canvas[key];
+                        }
+                    }
                     $('.goods_item').removeClass('selected');
-                    $('.role_pic').eq(selected_item_index).css('display','block');
+                    $('.delete_goods').css('display','none');
+                    $('.add_goods').css('display','block');
                     $(this).removeClass('active').attr('disabled',true);
+                    ShopMode.clearCanvas();
+                    ShopMode.beforeDraw();
+                    ShopMode.draw();
                 }
             });
             $('.close_cart').on('click', function () {
                 $('.choose_role').css('display', 'none');
             });
-
-            $('.goods_item').on('mouseenter', function () {
-                if(!$(this).hasClass('selected')){
-                    $(this).addClass('active');
-                }
-            });
-
             $('.goods_item').mouseleave(function () {
                 if(!$(this).hasClass('selected')){
                     $(this).removeClass('active');
+                }
+            }).mouseenter(function () {
+                if(!$(this).hasClass('selected')){
+                    $(this).addClass('active');
                 }
             });
             $('.goods_item').click(function () {
@@ -292,8 +245,8 @@
             $('.arrow_back').click(function () {
                 $('.role_right').css('display', 'none');
                 $('.role_right[type="cart"]').css('display', 'block');
-                // 
-                if(JSON.stringify(canvas) != '{}') {
+                
+                if(Object.keys(canvas).length>1) {
                     $('.reset').addClass('active').attr('disabled',false);
                     let keyArr = [];
                     for(let key in canvas) {
