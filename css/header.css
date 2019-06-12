@@ -24,19 +24,32 @@ a {
     float: right;
     background: url("../imgs/circle2.png");
     margin: 25px 58px 0 0; 
+    position: relative;
+    z-index: 1;
 }
 .navigation a {
     color: #ffffff; 
 }
 .navigation a:hover {
-    color: #000;
+    color: #ffcc01;
 }
-.navigation .active {
-    color: #eaba02;
+.navigation .nav_bg.active {
+    display: block;
+    width: 30px;
+    height: 10px;
+    background-color: #ffcc01;
+    position: absolute;
+    left: -7px;
+    top: 24px;
+    z-index: -1;
+}
+.navigation .nav_bg.hide {
+    display: none;
 }
 .navigation ul li {
     float: left;
     width: 137px;
+    position: relative;
 }
 .navigation ul li:first-child {
     margin-left: 65px;
