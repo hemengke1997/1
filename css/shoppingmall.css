@@ -259,9 +259,12 @@ body {
 .role_left .role_pic {
     width: 270px;
     height: 370px;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    position: absolute;
+    left: 185px;
+    top: 220px;
 }
 .role_left .role_name {
     font-size: 16px;
@@ -442,6 +445,10 @@ body {
     align-items: center;
     cursor: pointer;
 }
+.role_right .goods_list .goods_ul .goods_item.selected {
+    background-color: #eaba02;
+    color: #fff;
+}
 .role_right .goods_list .goods_ul .goods_item.active {
     background-color: #ebebeb;
     transform: translateY(-5px);
@@ -450,12 +457,41 @@ body {
 .goods_ul .goods_item img {
     margin: 0 20px;
 }
-.role_right .goods_list .goods_ul .goods_item span:last-child {
+.role_right .goods_list .goods_ul .goods_item .add_goods {
     width: 22px;
     height: 22px;
     background: url("../imgs/buypkkjk.png") no-repeat;
     margin-left: 235px;
 }
+.goods_item .delete_goods {
+        display: none;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        cursor: pointer;
+        margin-left: 235px;
+} 
+.goods_item .delete_goods.active {
+    background-color: #fff;
+    border-radius: 50%;
+}
+.goods_item .delete_goods::before,
+.goods_item .delete_goods::after{
+        content: "";
+        position: absolute;
+        height: 20px;
+        width: 4px;
+        top: 0;
+        right: 8px;
+        background-color: #000;
+    }
+.goods_item .delete_goods::before {
+    transform: rotate(45deg);
+}
+.goods_item .delete_goods::after {
+    transform: rotate(-45deg);
+}
+
 
 .role_right .reset {
     width: 150px;
@@ -471,6 +507,12 @@ body {
     font-size: 14px;
     font-weight: 700;
     border-radius: 5px;
+    outline: none;
+    border: 0;
+}
+.role_right .reset.active {
+    background-color: #ff9601;
+    color: #000;
     cursor: pointer;
 }
 

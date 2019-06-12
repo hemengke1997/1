@@ -98,27 +98,29 @@
         // context.fillRect(10,10,130,130);
         // context.strokeRect(50, 50, 50, 50);
         
-        var img = new Image();
-        img.onload = function() {
-            context.drawImage(img, 10, 10);
-            context.beginPath();
-            context.moveTo(30, 96);
-            context.lineTo(70, 66);
-            context.lineTo(103, 76);
-            context.lineTo(170, 15);
-            context.stroke();
-        }
-        img.src = 'imgs/1aaa.png';
-        // var arr = ['a','b','d'];
-        // var obj = {};
-        // for(let i=0;i<arr.length;i++){
-        //     obj[arr[i]] = '';
+        // var img = new Image();
+        // img.onload = function() {
+        //     context.drawImage(img, 10, 10);
+        //     context.beginPath();
+        //     context.moveTo(30, 96);
+        //     context.lineTo(70, 66);
+        //     context.lineTo(103, 76);
+        //     context.lineTo(170, 15);
+        //     context.stroke();
+        // }
+        // img.src = 'imgs/1aaa.png';
+        var arr = ['a','b','d'];
+        var obj = {};
+        for(let i=0;i<arr.length;i++){
+            obj[arr[i]] = '';
 
-        // }
-        // for(let key in obj) {
-        //     console.log(key);
-        //     console.log(obj[key]);
-        // }
+        }
+        for(let key in obj) {
+            console.log(key);
+            console.log(obj[key]);
+        }
+        var mm = {};
+        console.log(JSON.stringify(mm)=='{}');
     }
 </script>
 </html>
