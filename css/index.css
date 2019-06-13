@@ -370,6 +370,7 @@
         height: 60px;
         background-color: #537ff5;
         padding-left: 40px;
+        
     }
     .news_item.active .news_icon {
         background-color: #fff;
@@ -398,6 +399,10 @@
     }
     .news .news_content {
         font-size: 14px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 330px;
     }
     .news .news_date {
         font-size: 12px;

@@ -78,6 +78,9 @@ a {
 .navigation_scroll a {
     color: #fff;
 }
+.navigation_scroll a:hover {
+    color: #000000;
+}
 .navigation_scroll .active {
     color: #eaba02;
 }
@@ -132,47 +135,59 @@ a {
 
 /* tab栏模块 */
 .news_tab {
-    width: 360px;
-    height: 55px;
+    width: 290px;
+    height: 60px;
     margin: 0 auto;
-    text-align: center;
 }
 .news_tab ul {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
-.news_tab ul li {
-    float: left;
-    margin: 0 30px;
+.news_tab ul .news_tab_item {
     cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.news_tab ul li span {
+.news_tab ul .news_tab_item span {
     display: block;
 }
-.news_tab ul li .active {
+.news_tab ul .news_tab_item.active span{
     color: #000000;
 }
-.news_tab .en_text {
+.news_tab ul li .yl_bg.active {
+    width: 23px;
+    height: 9px;
+    background-color: #eaba02;
+    position: absolute;
+    left: -4px;
+    bottom: -2px;
+    z-index: -1;
+}
+.news_tab ul li .yl_bg.hide {
+    display: none;
+}
+
+.news_tab_item .en_text,
+.news_tab_item .zh_text {
+    font-weight: 700;
+    color: #6f6f6f;
+}
+.news_tab_item .en_text {
     font-size: 12px;
-    font-weight: bold;
-    color: #6f6f6f;
 }
-.news_tab .zh_text {
-    font-size: 16px; 
-    font-weight: bold;
-    color: #6f6f6f;
+.news_tab_item .zh_text {
+    font-size: 16px;
 }
+
 /* 新闻列表 */
 .main_2 {
     width: 100%;
-    height: 600px;
+    height: 800px;
     background: url("../imgs/bg_bottom.png") no-repeat rgba(255, 255, 255, 0.1);
-    display: none;
-}
-.main_2.active {
-    display: block;
-}
-.main_2.hide {
-    display: none;
+   
 }
 .container {
     width: 1200px;
@@ -181,23 +196,24 @@ a {
     border-bottom: 1px dashed #6f6f6f;
     position: relative;
     left:0;
+    transition: all 0.3s linear;
 }
 .news_detail .news_li {
     height: 120px;
     cursor: pointer;
 }
 .container .news_logo {
+    display: block;
     float: left;
     width: 30px;
     background-color: #eaba02;
-    border: 1px solid #eaba02;
     padding-left: 8px;
     border-radius: 50px;
     font-size: 12px;
     color:#000000;
     position: absolute;
-    top: 31px;
-    left: -5px;
+    top: 6px;
+    left: -47px;
 }
 .news_text {
     float: left;
