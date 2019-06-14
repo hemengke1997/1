@@ -37,18 +37,6 @@
                 }
             },
             mouseenterEvent: function () {
-                // $('.news_tab_item').click(function(){
-
-                // })
-                // 鼠标进入新闻tab时 显示当前对应的新闻列表
-                // $('.news_tab_item').mouseenter(function (e) {
-                //     let index = $(this).index();
-                //     $('.news_tab_item').removeClass('active');
-                //     $(this).addClass('active');
-
-                //     $('.news_box').removeClass('active').addClass('hide');
-                //     $('.news_box').eq(index).removeClass('hide').addClass('active');
-                // });
                 $('.video_tab_li').mouseenter(function () {
                     $('.video_tab_li').removeClass('active');
                     $(this).addClass('active');
@@ -147,7 +135,7 @@
                     }
                 })
             },
-            // 页面加载之后，读取新闻列表（包括类型，title，date）
+            // 第一次 页面加载之后，读取新闻列表（包括类型，title，date）
             // 最新的
             getNewsData: function () {
                 function getDate(time) {
@@ -169,7 +157,7 @@
                             if (data.length > 5) {
                                 li_len = 5;
                                 for (let i = 0; i < li_len; i++) {
-                                    all_li += '<li class="news_item" id="'+ data[i]._id +'">' +
+                                    all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
                                         '<span class="news_icon">' + data[i].type + '</span>' +
                                         '<div class="news">' +
                                         '<span class="news_content">' + data[i].title + '</span>' +
@@ -179,7 +167,7 @@
                                 }
                             } else if (data.length > 0 && data.length <= 5) {
                                 for (let i = 0; i < data.length; i++) {
-                                    all_li += '<li class="news_item" id="'+ data[i]._id +'">' +
+                                    all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
                                         '<span class="news_icon">' + data[i].type + '</span>' +
                                         '<div class="news">' +
                                         '<span class="news_content">' + data[i].title + '</span>' +
@@ -188,13 +176,21 @@
                                         '</li>'
                                 }
                             }
+                            $('.look_more').attr('type','最新'); 
                             $('.news_ul').html(all_li);
-                            $('.news_item').first().addClass('active');
                             $('.news_item').mouseenter(function () {
                                 $('.news_item').removeClass('active');
                                 $(this).addClass('active');
                             });
 
+                            // 点击新闻列表跳转到新闻详情
+                            $('.news_item').click(function () {
+                                window.location = 'file:///D:/pp-study/hmk-views/newscenter.html?id=' + $(this).attr('id') + '&&type_id=' + $(this).attr('type_id');
+
+                            });
+                            $('.look_more').click(function(){
+                                window.location = 'file:///D:/pp-study/hmk-views/newscenter.html?type=' + $(this).attr('type');
+                            });
                         }
                     }
                 });
@@ -220,7 +216,7 @@
                                         for (let i = 0; i < data.length && theCount < 5; i++) {
                                             if (data[i].type == newsType) {
                                                 theCount++;
-                                                all_li += '<li class="news_item" id="'+ data[i]._id +'">' +
+                                                all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
                                                     '<span class="news_icon">' + data[i].type + '</span>' +
                                                     '<div class="news">' +
                                                     '<span class="news_content">' + data[i].title + '</span>' +
@@ -229,12 +225,16 @@
                                                     '</li>';
                                             }
                                         }
-
+                                        $('.look_more').attr('type',newsType);
                                         $('.news_ul').html(all_li);
-                                        $('.news_item').first().addClass('active');
                                         $('.news_item').mouseenter(function () {
                                             $('.news_item').removeClass('active');
                                             $(this).addClass('active');
+                                        });
+                                        // 点击新闻列表跳转到新闻详情
+                                        $('.news_item').click(function () {
+                                            window.location = 'file:///D:/pp-study/hmk-views/newscenter.html?id=' + $(this).attr('id') + '&&type_id=' + $(this).attr('type_id');
+
                                         });
                                     }
                                 }

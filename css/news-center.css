@@ -255,7 +255,7 @@ a {
 }
 
 .news_body1 {
-    display: block;
+    display: none;
 }
 
 /* 新闻详情 */
@@ -266,7 +266,8 @@ a {
     border-bottom: 1px solid #e6e6e6;
 }
 
-.return .return_arrow {
+.return_arrow {
+    display: block;
     width: 63px;
     height: 17px;
     background: url("../imgs/arrow_left.png") no-repeat;
@@ -274,7 +275,8 @@ a {
     left: 290px;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 999;
+    z-index: 10;
+    cursor: pointer;
 }
 .det_head {
     width: 900px;
@@ -320,5 +322,5 @@ a {
     margin: 30px 0;
 }
 .news_body2 {
-    display: none;
+    display: block;
 }
