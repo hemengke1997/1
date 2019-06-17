@@ -5,15 +5,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>测试</title>
+    <style>
+        .pagination {
+    width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pagination-ul,
+.page-item {
+    cursor: pointer;
+}
+.pagination-ul {
+    display: flex;
+    margin: 0 20px;
+}
+.page-item {
+    margin: 0 8px;
+    width: 30px;
+    height: 30px;
+    background-color: #dedede;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+}
+.page-item.selected {
+    color: #fff;
+    background-color: #be4c4d !important;
+}
+.page-item.active {  
+    background-color: #949494;
+}
+.first-page,
+.end-page,
+.btn-prev-page ,
+.btn-next-page {
+    display: flex;
+    width: 70px;
+    height: 30px;
+    background-color: #dedede;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.disabled {
+    cursor: not-allowed;
+}
+.btn-prev-page {
+    margin: 0 -8px 0 8px; 
+}
+.btn-next-page {
+    margin: 0 8px 0 -8px;
+}
+
+    </style>
 </head>
 <body onload="draw();">
-    <canvas width="150px" height="150px" id="myCanvas" style="border: 1px solid"></canvas>
+    <!-- <canvas width="150px" height="150px" id="myCanvas" style="border: 1px solid"></canvas> -->
+    <div class="pagination">
+           
+            <span class="btn-prev-page">上一页</span>
+                <ul class="pagination-ul">
+                    <li class="page-item active selected">1</li>
+                    <li class="page-item">2</li>
+                    <li class="page-item">3</li>
+                    <li class="page-item">4</li>
+                    <li class="page-item">5</li>
+                    <li class="page-item">...</li>
+                </ul>
+            <span class="btn-next-page">下一页</span>
+           
+        </div>
 </body>
 
 <script>
     function draw(){
-        let canvas = document.getElementById('myCanvas');
-        let context = canvas.getContext('2d');
+        var a = '...';
+        a =  parseInt(a);
+        console.log(Number.isInteger(a));
+
+
+        // let canvas = document.getElementById('myCanvas');
+        // let context = canvas.getContext('2d');
 
         // ctx.fillStyle = 'rgba(200,0,0,.2)';
         // ctx.fillRect(10,10,50,50);
@@ -131,9 +207,52 @@
         //     return month + '-' + day;
         // }
         // console.log(getDate(d));
-        var url = 'file:///D:/pp-study/hmk-views/newscenter.html';
-        var a = url.split('?');
-        console.log(a);
+        // var url = 'file:///D:/pp-study/hmk-views/newscenter.html';
+        // var a = url.split('?');
+        // console.log(a);
+
+        // const p1 = new Promise(function (resolve,reject) {
+        //     setTimeout(() => {
+        //        resolve("ok!") ,
+        //        reject("failed")
+        //     }, 2000);
+        // })
+        // const p2 = new Promise(function (resolve,reject) {
+        //     setTimeout(() => {
+        //         resolve(p1);
+        //     }, 1000);
+        // })
+        // p2.then(result => console.log(result)).catch(error=> console.log(error));
+        // var p = new Promise(function (resolve, reject) {
+        //     var timer = setTimeout(function () {
+        //         console.log('执行操作1');
+        //         resolve('this is resolve')
+        //         reject('这是reject');
+        //         resolve('this is resolve')
+        //     }, 1000);
+        // });
+        // p.then(function(data){
+        //     console.log(data);
+        //     console.log("成功操作");
+        // }).catch((error)=>{
+        //     console.log(error);
+        // })
+        // const p = new Promise(function (resolve,reject) {
+        //     console.log('promise被创建');
+        //     if(1>2){
+        //         resolve('resolved');
+        //     } else {
+        //         reject('rejected');
+        //     }
+            
+        // });
+        
+        // p.then(function (value) {
+        //     console.log(value)
+        // }).catch((error)=>{
+        //     console.log(error);
+        // })
+        
     }
 </script>
 </html>
