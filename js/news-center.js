@@ -173,6 +173,9 @@
                 var startRow = (currentPage-1)*pSize + 1;
                 var endRow = currentPage * pSize;
                 endRow = (endRow>dataLength) ? dataLength : endRow;
+
+
+
                 var commonHTML = '<span class="btn-prev-page">上一页</span>' + 
                 '<ul class="pagination-ul">' + 
                 '</ul>' + 
@@ -194,6 +197,9 @@
                     
                 }
                 $('.news_detail').html(all_li);
+                
+
+
                 // 先把分页的显示效果做了
                 var pageItem = '';
                 if(totalPage == 1){
@@ -219,14 +225,7 @@
                     
                 }
                 $('.page-item').eq(currentPage-1).addClass('selected');
-                $('.page-item').click(function () { 
-                    currentPage = $(this).attr('value');
-                    if(currentPage!=0){
-                        newsCenterMode.goPage(arr,currentPage);
-                        clickPageItem();
-                    }
-                    
-                })
+                pageItemUnbind();
 
                 // 上一页点击事件
                 $('.btn-prev-page').click(function () {
@@ -252,13 +251,10 @@
                         }
                     }
                 })
-
-
                 
                 if(currentPage == 1) {
                     $('.btn-prev-page').addClass('disabled');       
                 }
-
                 $('.news_li').mouseenter(function () {
                     $('.news_li').removeClass('active');
                     $(this).addClass('active');
@@ -286,46 +282,66 @@
                             pageItem += '<li class="page-item" value="'+ i +'">'+ i +'</li>';
                         }
                         pageItem += '<li class="page-item">...</li>';
-                        $('.pagination-ul').html(pageItem);
-                        $('.page-item').each(function () {
-                            if($(this).attr('value')==currentPage){
-                                $(this).addClass('selected');
-                            }
-                        })
+                        selectPageItem(pageItem);
+                        // 点击上下页之后生成的item还没有注册事件
+                        pageItemUnbind();
                     }
                     if(currentPage > totalPage - 3){
                         pageItem = '<li class="page-item">...</li>';
                         for(let i=totalPage-4;i<=totalPage;i++){
                             pageItem += '<li class="page-item" value="'+ i +'">'+ i +'</li>';
                         }
-                        $('.pagination-ul').html(pageItem);
-                        $('.page-item').each(function () {
-                            if($(this).attr('value')==currentPage){
-                                $(this).addClass('selected');
-                            }
-                        })
+                        selectPageItem(pageItem);
+                        // 点击上下页之后生成的item还没有注册事件
+                       pageItemUnbind();
                     }
+                }
+                
+
+
+                function selectPageItem(pageItem) {
+                    $('.pagination-ul').html(pageItem);
+                    $('.page-item').each(function () {
+                        if($(this).attr('value')==currentPage){
+                            $(this).addClass('selected');
+                        }
+                    })
+                }
+                function pageItemUnbind() {
+                    $('.page-item').unbind('click').click(function () {
+                        currentPage = $(this).attr('value') != 0 ? $(this).attr('value') : currentPage;
+                        clickPageItem();
+                    })
                 }
                 // 分页列表 点击页码时的JS效果
                 function clickPageItem() {
-                    if(currentPage > 3 && currentPage <= totalPage - 3){
+                    newsCenterMode.goPage(arr,currentPage);
+                    if(currentPage < 3){
                         pageItem = '';
+                        for(let i=1;i<=5;i++){
+                            pageItem += '<li class="page-item" value="'+ i +'">'+ i +'</li>';
+                        }
+                        pageItem += '<li class="page-item">...</li>';
+                        selectPageItem(pageItem);
+                        pageItemUnbind()
+                        
+                    }
+                    if(currentPage > 3 && currentPage <= totalPage - 3){
+                        pageItem = '<li class="page-item">...</li>';
                         for(let i=currentPage-2;i<=currentPage+2;i++){
                             pageItem += '<li class="page-item" value="'+ i +'">'+ i +'</li>';
                         }
                         pageItem += '<li class="page-item">...</li>';
-                        $('.pagination-ul').html(pageItem);
-                        $('.page-item').each(function () {
-                            if($(this).attr('value')==currentPage){
-                                $(this).addClass('selected');
-                            }
-                        })
-                        $('.page-item').click(function () {
-                            console.log(11111);
-                        })
+                        selectPageItem(pageItem);
+                        pageItemUnbind();
                     }
                     if(currentPage > totalPage - 3) {
-                        
+                        pageItem = '<li class="page-item">...</li>';
+                        for(let i=totalPage-4;i<=totalPage;i++){
+                            pageItem += '<li class="page-item" value="'+ i +'">'+ i +'</li>';
+                        }
+                        selectPageItem(pageItem);
+                        pageItemUnbind();
                     }
                     
                 }
