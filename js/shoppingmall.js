@@ -310,6 +310,7 @@
         createImage: function (context,key,x,y) {
             let img = new Image();
             img.src = ''+ canvas[key] +'';
+            console.log(canvas);
             img.onload = function () {
                 context.drawImage(img, x, y);      
             }

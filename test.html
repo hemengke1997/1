@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,65 +8,74 @@
     <title>测试</title>
     <style>
         .pagination {
-    width: 1200px;
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.pagination-ul,
-.page-item {
-    cursor: pointer;
-}
-.pagination-ul {
-    display: flex;
-    margin: 0 20px;
-}
-.page-item {
-    margin: 0 8px;
-    width: 30px;
-    height: 30px;
-    background-color: #dedede;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 4px;
-}
-.page-item.selected {
-    color: #fff;
-    background-color: #be4c4d !important;
-}
-.page-item.active {  
-    background-color: #949494;
-}
-.first-page,
-.end-page,
-.btn-prev-page ,
-.btn-next-page {
-    display: flex;
-    width: 70px;
-    height: 30px;
-    background-color: #dedede;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.disabled {
-    cursor: not-allowed;
-}
-.btn-prev-page {
-    margin: 0 -8px 0 8px; 
-}
-.btn-next-page {
-    margin: 0 8px 0 -8px;
-}
+            width: 1200px;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
+        .pagination-ul,
+        .page-item {
+            cursor: pointer;
+        }
+
+        .pagination-ul {
+            display: flex;
+            margin: 0 20px;
+        }
+
+        .page-item {
+            margin: 0 8px;
+            width: 30px;
+            height: 30px;
+            background-color: #dedede;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 4px;
+        }
+
+        .page-item.selected {
+            color: #fff;
+            background-color: #be4c4d !important;
+        }
+
+        .page-item.active {
+            background-color: #949494;
+        }
+
+        .first-page,
+        .end-page,
+        .btn-prev-page,
+        .btn-next-page {
+            display: flex;
+            width: 70px;
+            height: 30px;
+            background-color: #dedede;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .disabled {
+            cursor: not-allowed;
+        }
+
+        .btn-prev-page {
+            margin: 0 -8px 0 8px;
+        }
+
+        .btn-next-page {
+            margin: 0 8px 0 -8px;
+        }
     </style>
 </head>
+
 <body onload="draw();">
     <!-- <canvas width="150px" height="150px" id="myCanvas" style="border: 1px solid"></canvas> -->
-    <div class="pagination">
+    <!-- <div class="pagination">
            
             <span class="btn-prev-page">上一页</span>
                 <ul class="pagination-ul">
@@ -78,15 +88,53 @@
                 </ul>
             <span class="btn-next-page">下一页</span>
            
-        </div>
+        </div> -->
 </body>
 
 <script>
-    function draw(){
-        var a = '...';
-        a =  parseInt(a);
-        console.log(Number.isInteger(a));
-
+    function draw() {
+        // var a = '...';
+        // a =  parseInt(a);
+        // console.log(Number.isInteger(a));
+        function runAsync1() {
+            var p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(111)
+                    resolve('11111111')
+                }, 3000);
+            })
+            return p;
+        }
+        function runAsync2() {
+            var p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(222)
+                    resolve('222222')
+                }, 3000);
+            })
+            return p;
+        }
+        function runAsync3() {
+            var p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    console.log(3333)
+                    resolve('333333333')
+                }, 3000);
+            })
+            return p;
+        }
+        runAsync1()
+            .then(function (data) {
+                console.log(data);
+                return runAsync2();
+            })
+            .then(function (data) {
+                console.log(data);
+                return runAsync3();
+            })
+            .then(function (data) {
+                console.log(data);
+            });
 
         // let canvas = document.getElementById('myCanvas');
         // let context = canvas.getContext('2d');
@@ -121,7 +169,7 @@
         // ctx.lineTo(25,100);
         // ctx.fillStyle = 'orange';
         // ctx.fill();
-        
+
 
         // ctx.beginPath();
         // ctx.moveTo(125,125);
@@ -139,7 +187,7 @@
         //         ctx.stroke();
         //     }
         // }
-        
+
         // var lineCap = ['butt','round','square'];
         // ctx.strokeStyle = '#09f';
         // ctx.beginPath();
@@ -158,7 +206,7 @@
         //     ctx.moveTo(25+i*50,10);
         //     ctx.lineTo(25+i*50,140);
         //     ctx.stroke();
-            
+
         // }
         // var lingrad = context.createLinearGradient(0,0,0,150);
         // lingrad.addColorStop(0,'#00ABEB');
@@ -173,7 +221,7 @@
         // context.strokeStyle=lingrad2;
         // context.fillRect(10,10,130,130);
         // context.strokeRect(50, 50, 50, 50);
-        
+
         // var img = new Image();
         // img.onload = function() {
         //     context.drawImage(img, 10, 10);
@@ -201,7 +249,7 @@
         // var d = new Date(time * 1000);
         // console.log(d);
         // function getDate(time) {
-            
+
         //     var month = time.getMonth() + 1;
         //     var day = time.getDay();
         //     return month + '-' + day;
@@ -244,15 +292,16 @@
         //     } else {
         //         reject('rejected');
         //     }
-            
+
         // });
-        
+
         // p.then(function (value) {
         //     console.log(value)
         // }).catch((error)=>{
         //     console.log(error);
         // })
-        
+
     }
 </script>
+
 </html>

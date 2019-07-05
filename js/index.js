@@ -1,5 +1,8 @@
 (function () {
     window.onload = function () {
+        var staticData = {
+            newsLength: 5,
+        }
         var indexMode = {
             init: function () {
                 this.totalEvents();
@@ -12,6 +15,7 @@
                 this.clickEvents();
                 this.videoEvents();
                 this.getNewsData();
+                this.clickNewsTab()
             },
             // 滑轮滚动一定距离，头部变化
             scrollFn: function () {
@@ -138,14 +142,7 @@
             // 第一次 页面加载之后，读取新闻列表（包括类型，title，date）
             // 最新的
             getNewsData: function () {
-                function getDate(time) {
-                    let date = new Date(time * 1000);
-                    let year = date.getFullYear();
-                    let month = ((date.getMonth() + 1) >= 10) ? date.getMonth() + 1 : '0' + (date.getMonth() + 1).toString();
-                    let day = (date.getDay() >= 10) ? date.getDay() : '0' + (date.getDay().toString());
-                    return month + '-' + day;
-                }
-                let li_len = 0;
+                
                 $.ajax({
                     type: "get",
                     url: "http://api.paopao.vip/news/item",
@@ -154,28 +151,8 @@
                         if (response.code === 0) {
                             var all_li = '';
                             var data = response.data.records;
-                            if (data.length > 5) {
-                                li_len = 5;
-                                for (let i = 0; i < li_len; i++) {
-                                    all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
-                                        '<span class="news_icon">' + data[i].type + '</span>' +
-                                        '<div class="news">' +
-                                        '<span class="news_content">' + data[i].title + '</span>' +
-                                        '<span class="news_date">' + getDate(data[i].itime) + '</span>' +
-                                        '</div>' +
-                                        '</li>';
-                                }
-                            } else if (data.length > 0 && data.length <= 5) {
-                                for (let i = 0; i < data.length; i++) {
-                                    all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
-                                        '<span class="news_icon">' + data[i].type + '</span>' +
-                                        '<div class="news">' +
-                                        '<span class="news_content">' + data[i].title + '</span>' +
-                                        '<span class="news_date">' + getDate(data[i].itime) + '</span>' +
-                                        '</div>' +
-                                        '</li>'
-                                }
-                            }
+                            var len = data.length;
+                            all_li = len > staticData.newsLength ?  indexMode.tempNewsItem(data,staticData.newsLength) : indexMode.tempNewsItem(data,len);
                             $('.look_more').attr('type','最新'); 
                             $('.news_ul').html(all_li);
                             $('.news_item').mouseenter(function () {
@@ -194,8 +171,9 @@
                         }
                     }
                 });
-
+            },
                 // 获取新闻或者活动列表
+            clickNewsTab: function () {
                 $('.news_tab_item').click(function () {
                     if (!($(this).hasClass('active'))) {
                         var newsType = $(this).find('.news_ch').text();
@@ -210,21 +188,11 @@
                                 dataType: "json",
                                 success: function (response) {
                                     if (response.code === 0 && response.data.count > 0) {
-                                        var theCount = 0;
-                                        var all_li = '';
                                         var data = response.data.records;
-                                        for (let i = 0; i < data.length && theCount < 5; i++) {
-                                            if (data[i].type == newsType) {
-                                                theCount++;
-                                                all_li += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
-                                                    '<span class="news_icon">' + data[i].type + '</span>' +
-                                                    '<div class="news">' +
-                                                    '<span class="news_content">' + data[i].title + '</span>' +
-                                                    '<span class="news_date">' + getDate(data[i].itime) + '</span>' +
-                                                    '</div>' +
-                                                    '</li>';
-                                            }
-                                        }
+                                        var TypeArr = data.filter((item)=>{
+                                            return item.type == newsType;
+                                        })
+                                        var all_li = TypeArr.length > staticData.newsLength ? indexMode.tempNewsItem(data,staticData.newsLength) : indexMode.tempNewsItem(data,TypeArr.length);
                                         $('.look_more').attr('type',newsType);
                                         $('.news_ul').html(all_li);
                                         $('.news_item').mouseenter(function () {
@@ -234,7 +202,6 @@
                                         // 点击新闻列表跳转到新闻详情
                                         $('.news_item').click(function () {
                                             window.location = 'file:///D:/pp-study/hmk-views/newscenter.html?id=' + $(this).attr('id') + '&&type_id=' + $(this).attr('type_id');
-
                                         });
                                     }
                                 }
@@ -242,10 +209,27 @@
                         }
                     }
                 })
-
-
+            },
+            tempNewsItem: function (data,len) {
+                var temp = '';
+                for(let i=0;i<len;i++){
+                    temp += '<li class="news_item" id="' + data[i]._id + '" type_id="' + data[i].type_id + '">' +
+                    '<span class="news_icon">' + data[i].type + '</span>' +
+                    '<div class="news">' +
+                    '<span class="news_content">' + data[i].title + '</span>' +
+                    '<span class="news_date">' + indexMode.getDate(data[i].itime) + '</span>' +
+                    '</div>' +
+                    '</li>';
+                }
+                return temp;
+            },
+            getDate: function (time) {
+                let date = new Date(time * 1000);
+                let year = date.getFullYear();
+                let month = ((date.getMonth() + 1) >= 10) ? date.getMonth() + 1 : '0' + (date.getMonth() + 1).toString();
+                let day = (date.getDay() >= 10) ? date.getDay() : '0' + (date.getDay().toString());
+                return month + '-' + day;
             }
-
         }
         indexMode.init();
     }
